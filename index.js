@@ -45,7 +45,7 @@ app.post('/api/profile', async (req, res) => {
 // update data
 app.put('/api/profile', async (req, res) => {
   try {
-    const Role = req.body.Role;
+    const Role = req.body;
     console.log(Role);
 
     // const newProfile = await profile.findByIdAndUpdate(id, req.body);
