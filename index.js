@@ -12,6 +12,7 @@ app.get('/', (req, res) => {
   res.send('hello');
 });
 
+// get final user data
 app.get('/api/profile', async (req, res) => {
   try {
     const profile2 = await profile.find({});
@@ -21,6 +22,17 @@ app.get('/api/profile', async (req, res) => {
   }
 });
 
+//get role data
+app.get('/api/role', async (req, res) => {
+  try {
+    const role = await roledata.find({});
+    res.status(200).send(role);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// create user
 app.post('/api/profile', async (req, res) => {
   try {
     const profile2 = await profile.create(req.body);
@@ -30,10 +42,21 @@ app.post('/api/profile', async (req, res) => {
   }
 });
 
-app.get('/api/role', async (req, res) => {
+// update data
+app.put('/api/profile', async (req, res) => {
   try {
-    const role = await roledata.find({});
-    res.status(200).send(role);
+    const Role = req.body.Role;
+    console.log(Role);
+
+    // const newProfile = await profile.findByIdAndUpdate(id, req.body);
+
+    // if (!newProfile) {
+    //   return res.status(404).json({ message: 'profile not found' });
+    // }
+
+    // const updatedProfile = await profile.findById(id);
+
+    // res.status(200).send(updatedProfile);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
