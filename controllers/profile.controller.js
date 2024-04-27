@@ -42,11 +42,7 @@ const deleteUser = async (req, res) => {
   try {
     const { Role } = req.params;
 
-    console.log(Role, '哈');
-
     const profiles = await profile.find({ Role });
-
-    console.log(profiles[0]._id, '?');
 
     const deletedProfile = await profile.findByIdAndDelete(profiles[0]._id);
 
