@@ -45,18 +45,42 @@ app.post('/api/profile', async (req, res) => {
 // update data
 app.put('/api/profile', async (req, res) => {
   try {
-    const Role = req.body;
-    console.log(Role);
+    const profiles = await profile.find({ Role: req.body.Role });
 
-    // const newProfile = await profile.findByIdAndUpdate(id, req.body);
+    const newProfile = await profile.findByIdAndUpdate(
+      profiles[0]._id,
+      req.body
+    );
 
-    // if (!newProfile) {
-    //   return res.status(404).json({ message: 'profile not found' });
-    // }
+    if (!newProfile) {
+      return res.status(404).json({ message: 'profile not found' });
+    }
 
-    // const updatedProfile = await profile.findById(id);
+    const updatedProfile = await profile.findById(profiles[0]._id);
+    res.status(200).send(updatedProfile);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
-    // res.status(200).send(updatedProfile);
+// delete data
+app.delete('/api/profile/:Role', async (req, res) => {
+  try {
+    const { Role } = req.params;
+
+    console.log(Role, '哈');
+
+    const profiles = await profile.find({ Role });
+
+    console.log(profiles[0]._id, '?');
+
+    const deletedProfile = await profile.findByIdAndDelete(profiles[0]._id);
+
+    if (!deletedProfile) {
+      return res.status(404).json({ message: 'Profile not found' });
+    }
+
+    res.status(200).json({ message: 'Profile deleted successfully' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

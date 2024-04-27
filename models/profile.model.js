@@ -8,6 +8,7 @@ const profileSchema = mongoose.Schema({
   Role: {
     type: String,
     required: true,
+    unique: true,
   },
 });
 
