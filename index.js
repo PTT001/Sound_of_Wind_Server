@@ -1,9 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const profile = require('./models/profile.model.js');
 const roledata = require('./models/role.model.js');
 const profileRoute = require('./routes/profile.route.js');
+
 const app = express();
 
 app.use(express.json());
