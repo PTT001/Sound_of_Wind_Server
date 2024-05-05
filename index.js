@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const roledata = require('./models/role.model.js');
 const profileRoute = require('./routes/profile.route.js');
+const RecordRoute = require('./routes/Record.route.js');
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(cors());
 
 //routes
 app.use('/api/profile', profileRoute);
+app.use('/api/Record', RecordRoute);
 
 app.get('/', (req, res) => {
   res.send('hello');

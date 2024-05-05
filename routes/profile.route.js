@@ -6,11 +6,13 @@ const {
   createUser,
   updateUser,
   deleteUser,
+  deleteAllUser,
 } = require('../controllers/profile.controller.js');
 
 router.post('/', createUser);
 router.get('/', getAllusers);
 router.put('/', updateUser);
+router.delete('/deleteall', deleteAllUser);
 router.delete('/:Role', deleteUser);
 
 module.exports = router;

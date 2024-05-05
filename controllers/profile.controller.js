@@ -56,4 +56,19 @@ const deleteUser = async (req, res) => {
   }
 };
 
-module.exports = { getAllusers, createUser, updateUser, deleteUser };
+const deleteAllUser = async (req, res) => {
+  try {
+    await profile.deleteMany({});
+    res.status(200).json({ message: 'Profile deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports = {
+  getAllusers,
+  createUser,
+  updateUser,
+  deleteUser,
+  deleteAllUser,
+};
