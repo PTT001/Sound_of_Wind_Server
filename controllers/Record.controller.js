@@ -9,6 +9,18 @@ const createRecord = async (req, res) => {
   }
 };
 
+const getAllRecord = async (req, res) => {
+  try {
+    const Record2 = await Record.find({});
+    console.log(Record2);
+
+    res.status(200).send(Record2);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   createRecord,
+  getAllRecord,
 };
