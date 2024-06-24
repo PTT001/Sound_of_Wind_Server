@@ -4,6 +4,7 @@ const cors = require('cors');
 const roledata = require('./models/role.model.js');
 const profileRoute = require('./routes/profile.route.js');
 const RecordRoute = require('./routes/Record.route.js');
+const messageRoute = require('./routes/message.route.js');
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(cors());
 //routes
 app.use('/api/profile', profileRoute);
 app.use('/api/Record', RecordRoute);
+app.use('/api/message', messageRoute);
 
 app.get('/', (req, res) => {
   res.send('hello');
