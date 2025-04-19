@@ -42,7 +42,7 @@ app.get('/api/role', async (req, res) => {
 
 mongoose
   .connect(
-    'mongodb+srv://haoyilu123:gjmZ1vlbyB42UyDo@cluster0.pylmfmz.mongodb.net/Role_Data?retryWrites=true&w=majority&appName=Cluster0'
+    'mongodb+srv://haoyilu123:753951852@cluster0.pylmfmz.mongodb.net/Role_Data?retryWrites=true&w=majority&appName=Cluster0'
   )
   .then(() => {
     console.log('successfully connect');
